@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjobgnw38qdao"]
+
+[ext_resource type="Script" path="res://Scripts/UI/SpellPickerButton.gd" id="1_eit4q"]
+
+[node name="SpellPickerButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "Spell Name"
+script = ExtResource("1_eit4q")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

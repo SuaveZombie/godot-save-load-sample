@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmisd0147l5we"]
+
+[ext_resource type="Script" path="res://Scripts/UI/SpellLoadoutButton.gd" id="1_4iu27"]
+
+[node name="LoadoutButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Loadout Name"
+script = ExtResource("1_4iu27")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

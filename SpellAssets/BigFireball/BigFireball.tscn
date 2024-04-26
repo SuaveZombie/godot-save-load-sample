@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxhgy23335suh"]
+
+[ext_resource type="Texture2D" uid="uid://dteaook723i15" path="res://SpellAssets/BigFireball/BigFireball.png" id="1_ifue8"]
+
+[node name="BigFireball" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(33, 34)
+texture = ExtResource("1_ifue8")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0jpldj4v120a"]
+
+[ext_resource type="Texture2D" uid="uid://bbsbcbqjnsrgu" path="res://SpellAssets/SuperiorSodaBall/SuperiorSodaBall.png" id="1_jp40y"]
+
+[node name="SuperiorSodaBall" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(33, 34)
+texture = ExtResource("1_jp40y")

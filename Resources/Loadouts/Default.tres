@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SpellLoadoutResource" load_steps=2 format=3 uid="uid://bwex465345l1a"]
+
+[ext_resource type="Script" path="res://CustomResources/SpellLoadoutResource.gd" id="1_qa2bv"]
+
+[resource]
+script = ExtResource("1_qa2bv")
+name = "Default Loadout"
+spell_ids = Array[int]([])

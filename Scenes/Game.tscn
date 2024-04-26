@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://pdyjio1568jm"]
+
+[ext_resource type="Texture2D" uid="uid://bbdnanm7o6vkw" path="res://icon.svg" id="1_jwl22"]
+[ext_resource type="Script" path="res://Scripts/UI/SpellSlots.gd" id="1_m8pcq"]
+[ext_resource type="Script" path="res://Scripts/UI/SpellLoadout.gd" id="3_14ef4"]
+[ext_resource type="Script" path="res://Scripts/UI/SpellPicker.gd" id="4_rqu2h"]
+[ext_resource type="Script" path="res://Scripts/UI/LoadoutPicker.gd" id="5_tf0th"]
+[ext_resource type="Script" path="res://Scripts/UI/SaveButton.gd" id="6_2vp3p"]
+[ext_resource type="Script" path="res://Scripts/UI/LoadGame.gd" id="7_rtug6"]
+
+[node name="Game" type="Node2D"]
+
+[node name="SpellSlots" type="Node2D" parent="."]
+position = Vector2(21, -13)
+script = ExtResource("1_m8pcq")
+
+[node name="Spell_Slot_0" type="Sprite2D" parent="SpellSlots"]
+position = Vector2(64, 581)
+texture = ExtResource("1_jwl22")
+
+[node name="Spell_Slot_1" type="Sprite2D" parent="SpellSlots"]
+position = Vector2(236, 583)
+texture = ExtResource("1_jwl22")
+
+[node name="Spell_Slot_2" type="Sprite2D" parent="SpellSlots"]
+position = Vector2(398, 581)
+texture = ExtResource("1_jwl22")
+
+[node name="SpellLoadout" type="Control" parent="." node_paths=PackedStringArray("spell_picker", "save_button", "loadout_name")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 19.0
+offset_right = 52.0
+offset_bottom = 59.0
+script = ExtResource("3_14ef4")
+spell_picker = NodePath("SpellPicker")
+save_button = NodePath("HBoxContainer/SaveLoadoutButton")
+loadout_name = NodePath("HBoxContainer/LoadoutNameEntry")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SpellLoadout"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="SpellLoadout/HBoxContainer"]
+layout_mode = 2
+text = "Create Spell Loadout"
+
+[node name="LoadoutNameEntry" type="TextEdit" parent="SpellLoadout/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="SaveLoadoutButton" type="Button" parent="SpellLoadout/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Save Loadout"
+
+[node name="SpellPicker" type="VBoxContainer" parent="SpellLoadout"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 48.0
+offset_right = 467.0
+offset_bottom = 151.0
+script = ExtResource("4_rqu2h")
+
+[node name="Label" type="Label" parent="SpellLoadout"]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 6.0
+offset_right = 937.0
+offset_bottom = 29.0
+text = "Loadouts"
+
+[node name="LoadoutPicker" type="VBoxContainer" parent="SpellLoadout" node_paths=PackedStringArray("spell_loadout_manager", "spell_slots")]
+layout_mode = 0
+offset_left = 686.0
+offset_top = 44.0
+offset_right = 1149.0
+offset_bottom = 147.0
+script = ExtResource("5_tf0th")
+spell_loadout_manager = NodePath("..")
+spell_slots = NodePath("../../SpellSlots")
+
+[node name="SaveButton" type="Button" parent="."]
+custom_minimum_size = Vector2(160, 80)
+offset_left = 975.0
+offset_top = 551.0
+offset_right = 1135.0
+offset_bottom = 631.0
+text = "Save Game"
+script = ExtResource("6_2vp3p")
+
+[node name="LoadButton" type="Button" parent="."]
+custom_minimum_size = Vector2(160, 80)
+offset_left = 975.0
+offset_top = 459.0
+offset_right = 1135.0
+offset_bottom = 539.0
+text = "Load Game"
+script = ExtResource("7_rtug6")
+
+[connection signal="button_down" from="SpellLoadout/HBoxContainer/SaveLoadoutButton" to="SpellLoadout" method="_on_save_loadout_button_button_down"]
+[connection signal="button_down" from="SaveButton" to="SaveButton" method="_on_button_down"]
+[connection signal="button_down" from="LoadButton" to="LoadButton" method="_on_button_down"]

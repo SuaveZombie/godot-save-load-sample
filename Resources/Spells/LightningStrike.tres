@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=4 format=3 uid="uid://dl6unotu5ytcv"]
+
+[ext_resource type="Texture2D" uid="uid://cpddjdk3iyenv" path="res://SpellAssets/Lightning/Lightning.png" id="1_7cgf8"]
+[ext_resource type="PackedScene" uid="uid://cd05bkt476d27" path="res://SpellAssets/Fireball/Fireball.tscn" id="2_ctvjc"]
+[ext_resource type="Script" path="res://CustomResources/SpellResource.gd" id="3_jpxo7"]
+
+[resource]
+script = ExtResource("3_jpxo7")
+id = 3
+name = "Lightning Strike"
+icon = ExtResource("1_7cgf8")
+scene = ExtResource("2_ctvjc")

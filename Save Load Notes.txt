@@ -1,0 +1,13 @@
+Save Load Notes
+
+# Static Data vs Dynamic Data
+
+Static data is stuff that you can create and set in stone during development. All the properties that make up your enemies, spells, etc. The moniker is a little confusing because some of this data can and will change during and even
+after development, for example the damage of a spell or the texture of an enemy BUT there are things that should be fixed, mainly a unique identifier via ID (whether you number it yourself or generate a GUID). If you ever want to keep track
+of things like which enemies the player has seen or which spells the player has unlocked you will need a unique identifier. Godot's Custom Resources are perfect for storing this type of data. This is really important because it allows you to make your game data-driven by reusing resources that you load upfront instead of having to hardcode or load resources directly in your other scripts.
+
+Dynamic data is stuff that is unique to each player that you will need to save and load progress. This is any data that can change during gameplay that you need to be able to reconstruct, for example the player's position in the world,
+which items they have equipped, or which spells they have unlocked (*hint* this ties into your static data!). The data itself is expected to change but the format that you save this data in should be consistent. Once its out in the world 
+it'll be up to you to make sure updates to your game don't break previous saves. This goes over the different formats you might want to save your data in (JSON vs Binary) https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html.
+
+

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpellResource" load_steps=4 format=3 uid="uid://bdnyio42u6cp2"]
+
+[ext_resource type="Texture2D" uid="uid://be4lq0b2f7yys" path="res://SpellAssets/Tornado/Tornado.png" id="1_8l748"]
+[ext_resource type="PackedScene" uid="uid://cd05bkt476d27" path="res://SpellAssets/Fireball/Fireball.tscn" id="2_gse8k"]
+[ext_resource type="Script" path="res://CustomResources/SpellResource.gd" id="3_ag5pu"]
+
+[resource]
+script = ExtResource("3_ag5pu")
+id = 4
+name = "Tornado"
+icon = ExtResource("1_8l748")
+scene = ExtResource("2_gse8k")
