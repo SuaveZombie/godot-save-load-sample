@@ -1,6 +1,8 @@
 extends Node
 class_name SpellSlots
 
+# This script displays the spells in your loadout at the bottom of the screen
+
 @onready var spell_slot_0: Sprite2D = $Spell_Slot_0
 @onready var spell_slot_1: Sprite2D = $Spell_Slot_1
 @onready var spell_slot_2: Sprite2D = $Spell_Slot_2

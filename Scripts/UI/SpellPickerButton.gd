@@ -1,6 +1,8 @@
 extends Button
 class_name SpellPickerButton
 
+# A simple toggle button for selecting spells in your loadout
+
 var spell_id: int
 
 signal on_spell_selected(button, selected)

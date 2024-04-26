@@ -1,6 +1,6 @@
 extends Node
 
-# This is a catch all script for doing your game setup, saving and loading data,
+# This script manages resource loading and saving/loading the game.
 # doing game initialization, and storing any global state you need for the game to work
 
 # This is your master dictionary of spells so you can easily query them in game via id
@@ -31,7 +31,7 @@ func add_spell_loadout(name: String, spell_ids: Array[int]):
 	spell_loadouts_dict[loadout.id] = loadout
 	on_loadout_created.emit(loadout)
 	
-# Other systems need to know when loadouts are created
+# Signal for other systems that need to know when loadouts are created
 signal on_loadout_created(loadout)
 	
 func get_spell_loadout(id: int) -> SpellLoadoutResource:
@@ -47,7 +47,7 @@ func _ready() -> void:
 	load_game_resources()
 
 # This is a funny little thing you might have to do to load resources at runtime on all platforms
-# Godot appends
+# Godot appends extra things to the end of the raw file name that we need to remove
 func _clean_file_name(file_name: String) -> String:
 	file_name = file_name.replace('.import', '')
 	file_name = file_name.replace('.remap', '')
@@ -58,6 +58,9 @@ func load_game_resources():
 
 func load_spell_resources():
 	# Load all your premade spell resources into a dictionary so they're easy to query in game
+	# You could just preload all these resources into an array or something, but implementing it
+	# this way means that any new spell created in "res://Resources/Spells/" will automatiaclly
+	# get loaded here with no extra work!
 	var file_path_prefix: String = "res://Resources/Spells/"
 	var spell_dir: DirAccess = DirAccess.open(file_path_prefix)
 	for spell_file_name in spell_dir.get_files():
@@ -72,9 +75,10 @@ func load_spell_resources():
 			print_debug("Name: ", spell_dict[cur_id].name, " ID: ", spell_dict[cur_id].id)
 			print_debug("Name: ", spell_res.name, " ID: ", spell_res.id)
 
+# Saving and loading are the inverse of each other, make sure that whatever order you store your data
+# into the savefile is exactly the same order that you get it back out
 const SAVEFILE_NAME = "user://savegame.save"
 func save_game():
-	# As far as this sample project goes, all we really have to save are loadouts
 	var savefile = FileAccess.open(SAVEFILE_NAME, FileAccess.WRITE)
 	
 	savefile.store_32(spell_loadouts_dict.values().size())
@@ -93,7 +97,6 @@ func load_game():
 	
 	var num_loadouts = savefile.get_32()
 	for i in num_loadouts:
-		# we need to deserialize our save in the exact same order that we saved it in
 		var name_length = savefile.get_32()
 		var loadout_name: String
 		for j in name_length:

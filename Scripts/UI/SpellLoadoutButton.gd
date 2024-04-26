@@ -1,6 +1,8 @@
 extends Button
 class_name SpellLoadoutButton
 
+# A simple button that emits a signal to change the current loadout
+
 var loadout_id: int
 
 signal on_loadout_selected(id)

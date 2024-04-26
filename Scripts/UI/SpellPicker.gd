@@ -1,6 +1,9 @@
 extends VBoxContainer
 class_name SpellPicker
 
+# This script dynamically creates buttons for every spell defined in "res://Resources/Spells"
+# and manages spell selection for saving loadouts
+
 const SPELL_PICKER_BUTTON = preload("res://UI/SpellPickerButton.tscn")
 var spell_buttons: Array[SpellPickerButton]
 var selected_spells: Array[int]

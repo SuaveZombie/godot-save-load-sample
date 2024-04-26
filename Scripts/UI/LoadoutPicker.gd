@@ -1,5 +1,8 @@
 extends VBoxContainer
 
+# This script handles creating buttons for our loadouts and telling our spell slots
+# that they need to update
+
 @export var spell_loadout_manager: SpellLoadoutManager
 @export var spell_slots: SpellSlots
 const SPELL_LOADOUT_BUTTON = preload("res://UI/SpellLoadoutButton.tscn")
